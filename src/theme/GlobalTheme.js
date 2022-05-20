@@ -10,5 +10,9 @@ export const GlobalTheme = createTheme({
     danger: {
       main: 'hsl(0, 94%, 66%)',
     }
+  },
+  typography: {
+    fontFamily: 'Rubik, sans-serif',
   }
+  
 })
