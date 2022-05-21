@@ -19,7 +19,7 @@ export default function NavBar() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, px: 8, pt: 2}}>
       <AppBar elevation={0} position="static">
         <Toolbar sx={{background: '#fff', color: '#000', justifyContent: 'space-between'}}>
           <Bookmark/>

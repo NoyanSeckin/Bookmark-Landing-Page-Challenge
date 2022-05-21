@@ -51,5 +51,13 @@ table {
 
 .features-hr{
 	border: 1px solid lightgray;
-	width: 54%;
+	width: 41%;
+	position: absolute;
+	z-index: -1;
+	bottom: -8px;
+}
+
+.illustration{
+	border-radius: 8px; 
+	background: rgb(244, 240, 240);
 }
