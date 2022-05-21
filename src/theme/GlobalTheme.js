@@ -14,8 +14,14 @@ export const GlobalTheme = createTheme({
   typography: {
     fontFamily: 'Rubik, sans-serif',
   },
-  Button: {
-    textTransform: 'none'
-  }
+  components:{
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none'
+        }
+      }
+    },
+  },
   
 })

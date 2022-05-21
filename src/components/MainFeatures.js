@@ -4,18 +4,7 @@ import React, {useState} from 'react'
 import Illustration1 from '../icons/Illustration1'
 import Illustration2 from '../icons/Illustration2'
 import Illustration3 from '../icons/Illustration3'
-import BgDots from '../icons/BgDots'
-
-
-const featuresContainer = {
-  display: 'flex',  
-  flexDirection: 'column', 
-  alignItems: 'center', 
-  textAlign: 'center', 
-  gap: 3, 
-  position: 'relative', 
-  mt: 17
-}
+import CenterHeaderComponent from './CenterHeaderComponent'
 
 const moreInfoBtn = {
   backgroundColor: 'primary.main', 
@@ -46,19 +35,8 @@ const blueBackground = {
 export default function MainFeatures() {
   const [activeNav, setActiveNav] = useState('Simple Bookmarking')
 
-
-  function renderFeatures(){
-    return(
-      <Box sx={featuresContainer}>
-        <Typography variant='h4' sx={{fontWeight: '500'}}>Features</Typography>
-        <Typography sx={{color: 'gray', width: '32%'}}>Our aim is to make quick and easy for you to access your favourite websites. Your bookmarks sync between your devices so you can access them on the go.</Typography>
-        <Box sx={{display: 'flex', gap: 3, mt: 4}}>
-        {renderNavs()}
-        </Box>
-        <hr className='features-hr'/>
-      </Box>
-    )
-  }
+  const centerHeader = "Features"
+  const centerText= "Our aim is to make quick and easy for you to access your favourite websites. Your bookmarks sync between your devices so you can access them on the go."
 
   function renderNavs(){
     const navs = ['Simple Bookmarking', 'Speedy Searching', 'Easy Sharing'];
@@ -106,9 +84,10 @@ export default function MainFeatures() {
   }
 
   return (
-    <div>
-      {renderFeatures()}
+    <Box sx={{mt: 17}}>
+      {/* {renderFeatures()} */}
+      <CenterHeaderComponent header={centerHeader} text={centerText}/>
       {renderTabGrid()}
-    </div>
+    </Box>
   )
 }

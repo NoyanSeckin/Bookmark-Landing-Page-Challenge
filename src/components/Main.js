@@ -2,7 +2,8 @@ import {Box, Grid, Button, Typography} from '@mui/material'
 import React, {useState} from 'react'
 import Hero from '../icons/Hero'
 import MainFeatures from './MainFeatures'
-import MainExtension from './MainExtension.js'
+import MainExtension from './MainExtension'
+import MainFAQ from './MainFAQ'
 
 const blueBackgroundStyle = {
   backgroundColor: 'primary.main', 
@@ -66,7 +67,7 @@ export default function Main() {
      {renderIntro()}
      <MainFeatures/>
      <MainExtension/>
-    
+     <MainFAQ/>
     
    </Box>
   )
