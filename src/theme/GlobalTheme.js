@@ -13,6 +13,9 @@ export const GlobalTheme = createTheme({
   },
   typography: {
     fontFamily: 'Rubik, sans-serif',
+  },
+  Button: {
+    textTransform: 'none'
   }
   
 })
