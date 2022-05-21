@@ -13,7 +13,7 @@ const blueBackgroundStyle = {
   width: '100%', 
   height: '350px', 
   bottom: '-50px',
-  right: '-300px',
+  right: '-220px',
   zIndex: -1
 }
 

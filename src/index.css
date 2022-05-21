@@ -26,6 +26,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
   box-sizing: border-box;
+	overflow-x: hidden;
 }
 ol, ul {
 	list-style: none;
@@ -60,4 +61,14 @@ table {
 .illustration{
 	border-radius: 8px; 
 	background: rgb(244, 240, 240);
+}
+
+.accordion-hr{
+	border: 1px solid lightgray;
+	width: 94%;
+}
+
+.accordion-top-hr{
+	border: 1px solid lightgray;
+	width: 46%;
 }
