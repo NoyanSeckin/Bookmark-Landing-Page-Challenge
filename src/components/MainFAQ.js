@@ -32,8 +32,6 @@ export default function MainFAQ() {
     let activeAccordionCopy = [...activeAccordion];
     activeAccordionCopy[number] = expanded;
     setActiveAccordion(activeAccordionCopy);
-    console.log(expanded, number)
-    console.log(activeAccordion)
   } 
 
   function renderAccordion(summary, number){
@@ -67,7 +65,7 @@ export default function MainFAQ() {
         {renderAccordion('How can I request a new browser?', 1)}
         {renderAccordion('Is there a mobile app?', 2)}
         {renderAccordion('What about other Chromium browsers?', 3)}
-        <Button sx={moreInfoBtn}>More Info</Button>
+        <Button variant='contained' sx={moreInfoBtn}>More Info</Button>
       </Box>
     )
   }
@@ -75,7 +73,6 @@ export default function MainFAQ() {
   return (
     <Box sx={{mt: 15}}>
       <CenterHeaderComponent header={centerHeader} text={centerText}/>
-      
       {renderAccordions()}
     </Box>
   )

@@ -8,12 +8,33 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Bookmark from '../icons/Bookmark'
 
+const loginBtnStyle = {
+  backgroundColor: 'warning.main', 
+  color: '#fff', 
+  px: 4,
+  '&:hover': {
+    backgroundColor: '#fff',
+    color: 'warning.main',
+    borderColor: 'warning.main',
+    
+  }
+}
+
+const navStyle = {
+  alignSelf: 'center', 
+  fontWeight: '500',
+  '&:hover': {
+    cursor: 'pointer',
+    color: 'grayishBlue'
+  }
+}
+
 export default function NavBar() {
 
   function renderRightNav(){
     const navItems = ['FEATURES', 'PRICING', 'CONTACT'];
     return navItems.map(nav => 
-    <Typography sx={{alignSelf: 'center', fontWeight: '500'}}>
+    <Typography sx={navStyle}>
       {nav}
     </Typography>)
   }
@@ -22,10 +43,10 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1, px: 8, pt: 2}}>
       <AppBar elevation={0} position="static">
         <Toolbar sx={{background: '#fff', color: '#000', justifyContent: 'space-between'}}>
-          <Bookmark/>
+          <Bookmark textColor='#242A45'/>
           <Box sx={{display: 'flex', gap: 5, alignSelf: 'center'}}>
             {renderRightNav()}
-            <Button sx={{backgroundColor: 'warning.main', color: '#fff', px: 4}}>Login</Button>
+            <Button variant='outlined' sx={loginBtnStyle}>LOGIN</Button>
           </Box>
           {/* <IconButton
             size="large"

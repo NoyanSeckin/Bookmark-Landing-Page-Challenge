@@ -72,3 +72,14 @@ table {
 	border: 1px solid lightgray;
 	width: 46%;
 }
+
+.footer-input{
+	padding: 0.8rem 1.3rem;
+	border-radius: 5px;
+	outline: none;
+	border: none;
+}
+
+.footer-input::placeholder{
+	color: gray;
+}
