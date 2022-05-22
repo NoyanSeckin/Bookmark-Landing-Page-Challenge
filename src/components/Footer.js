@@ -23,7 +23,12 @@ const btnStyle = {
   color: '#fff', 
   ml: 2, 
   px: 2, 
-  py: 1
+  py: 1,
+  '&:hover':{
+    backgroundColor: '#fff',
+    borderColor: 'warning.main',
+    color: 'warning.main'
+  }
 }
 
 const navStyle = {
@@ -31,12 +36,35 @@ const navStyle = {
   fontSize: '14px'
 }
 
+const alertContainerStyle = {
+  position: 'absolute', 
+  backgroundColor: 'warning.main', 
+  color: '#fff', 
+  fontSize: '13px', 
+  py: 0.7, 
+  pr: 4.4, 
+  pl: 1,
+  borderBottomRightRadius: '5px',
+  borderBottomLeftRadius: '5px',
+  top: '38px',
+
+}
+
 export default function Footer() {
   const [userInput, setUserInput] = useState('');
-  const [inputAlert, setInputAlert] = useState('');
+  const [inputAlert, setInputAlert] = useState("");
   
   function handleChange(event){
+    const input = event.target.value;
     setUserInput(event.target.value)
+    setInputAlert('')
+  }
+
+  function handleClick(){
+    let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if(!userInput || !userInput.match(validRegex)){
+      setInputAlert("Whoops, make sure it's an email")
+    }
   }
 
   function renderHeaderAndInput(){
@@ -44,9 +72,10 @@ export default function Footer() {
       <Box sx={headerContainerStyle}>
         <Typography sx={{...headerStyle, fontSize: '10px', letterSpacing: '0.3rem'}}>35.000+ ALREADY JOINED</Typography>
         <Typography variant='h5' sx={{...headerStyle, width: {md: '35%', lg: '25%'}}}>Stay up-to-date with what we're doing</Typography>
-        <Box>
-          <input type="text" placeholder='Enter your email address' className='footer-input' value={userInput} onChange={(e)=> handleChange(e)}/> 
-          <Button sx={btnStyle}>Contact Us</Button>
+        <Box sx={{position: 'relative'}}>
+          <input type="email" placeholder='Enter your email address' className='footer-input' value={userInput} onChange={(e)=> handleChange(e)}/>
+          <Box sx={{...alertContainerStyle, display: !inputAlert && 'none'}}>{inputAlert}</Box> 
+          <Button variant='outlined' sx={btnStyle} onClick={handleClick}>Contact Us</Button>
         </Box>
       </Box>
     )

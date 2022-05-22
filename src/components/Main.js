@@ -1,5 +1,5 @@
 import {Box, Grid, Button, Typography} from '@mui/material'
-import React, {useState} from 'react'
+import React from 'react'
 import Hero from '../icons/Hero'
 import MainFeatures from './MainFeatures'
 import MainExtension from './MainExtension'
@@ -17,6 +17,27 @@ const blueBackgroundStyle = {
   zIndex: -1
 }
 
+const chromeBtnStyle = {
+  backgroundColor: 'primary.main', 
+  color: '#fff',
+  mr: 1, 
+  py: 1,
+  '&:hover': {
+    color: 'primary.main'
+  }
+}
+
+const firefoxBtnStyle = {
+  backgroundColor: '#fff', 
+  color: 'grayishBlue', 
+  border: '1px solid #fff',
+
+  py: 1,
+  '&:hover': {
+    backgroundColor: '#fff',
+    borderColor: '#000'
+  }
+}
 
 export default function Main() {
 
@@ -31,8 +52,8 @@ export default function Main() {
         <Typography sx={{my: 4, color: 'gray', width: '70%', fontSize: '18px'}}>
           A clean and simple interface to organize your favourite websites. Open a new browser tab and see your sites load instantly. Try it for free.
         </Typography>
-        <Button variant='contained' sx={{backgroundColor: 'primary.main', mr: 1, py: 1}}>Get it on Chrome</Button>
-        <Button variant='contained' sx={{backgroundColor: '#fff', color: 'grayishBlue', py: 1}}>Get it on Firefox</Button>
+        <Button variant='outlined' sx={chromeBtnStyle}>Get it on Chrome</Button>
+        <Button variant='contained' sx={firefoxBtnStyle}>Get it on Firefox</Button>
        </Box>
       </Grid>
     )
@@ -58,17 +79,12 @@ export default function Main() {
     )
   }
 
- 
-
-  
-
   return (
    <Box>
      {renderIntro()}
      <MainFeatures/>
      <MainExtension/>
      <MainFAQ/>
-    
    </Box>
   )
 }

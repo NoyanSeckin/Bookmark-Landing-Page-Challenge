@@ -1,4 +1,4 @@
-import {Box, Card, CardContent, CardMedia, CardActions, Button, Typography} from '@mui/material'
+import {Box, Card, CardContent, CardActions, Button, Typography} from '@mui/material'
 
 import React from 'react'
 import CenterHeaderComponent from './CenterHeaderComponent'
@@ -7,6 +7,41 @@ import Firefox from '../icons/Firefox'
 import Opera from '../icons/Opera'
 import BgDots from '../icons/BgDots'
 
+const extensionBtnStyle = {
+  backgroundColor: 'primary.main', 
+  color: '#fff',
+  py: 1.3, 
+  px: 4,
+  '&:hover': {
+    backgroundColor: '#fff',
+    color: 'primary.main'
+  }
+}
+
+const cardsContainer = {
+  display: 'flex', 
+  justifyContent: 'center', 
+  gap: 5, 
+  height: '370px', 
+  mt: 7
+}
+
+const cardStyle = {
+  maxWidth: '250px', 
+  display: 'flex', 
+  flexDirection: 'column', 
+  alignItems: 'center', 
+  pt: 4,
+  pb: 1, 
+  px: 0
+}
+
+const minVersionStyle = {
+  color: 'gray', 
+  fontSize: '14px', 
+  mb: 2
+}
+
 export default function MainExtensionjs() {
 
   const centerHeader = 'Download the extension';
@@ -14,15 +49,15 @@ export default function MainExtensionjs() {
 
   function renderCard(Icon, header, text, alignSelf){
     return(
-      <Card sx={{maxWidth: '250px', display: 'flex', flexDirection: 'column', alignItems: 'center', pt: 4, pb: 1, px: 0, alignSelf}}>
+      <Card sx={{...cardStyle, alignSelf}}>
         <Icon/>
         <CardContent> 
           <Typography variant='h6'>Add to {header}</Typography>
-          <Typography sx={{color: 'gray', fontSize: '14px', mb: 2}}>Minimum version {text}</Typography>
+          <Typography sx={minVersionStyle}>Minimum version {text}</Typography>
         </CardContent>
         <BgDots/>
         <CardActions sx={{mt: 2}}>
-          <Button variant='contained' sx={{backgroundColor: 'primary.main', py: 1.3, px: 4}}>Add & Install Extension</Button>
+          <Button variant='outlined' sx={extensionBtnStyle}>Add & Install Extension</Button>
         </CardActions>
       </Card>
     )
@@ -30,7 +65,7 @@ export default function MainExtensionjs() {
 
   function renderCards(){
     return(
-      <Box sx={{display: 'flex', justifyContent: 'center', gap: 5, height: '370px', mt: 7}}>
+      <Box sx={cardsContainer}>
         {renderCard(Chrome, 'Chrome', '62', 'start')}
         {renderCard(Firefox, 'Firefox', '55', 'center')}
         {renderCard(Opera, 'Opera', '46', 'end')}

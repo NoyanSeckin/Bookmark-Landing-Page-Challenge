@@ -48,11 +48,12 @@ table {
 
 .active-nav{
 	border-bottom: 5px solid hsl(0, 94%, 66%);
+	color: #000 !important;
 }
 
 .features-hr{
 	border: 1px solid lightgray;
-	width: 41%;
+	width: 100%;
 	position: absolute;
 	z-index: -1;
 	bottom: -8px;
@@ -78,6 +79,7 @@ table {
 	border-radius: 5px;
 	outline: none;
 	border: none;
+	z-index: 2;
 }
 
 .footer-input::placeholder{

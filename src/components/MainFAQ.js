@@ -12,7 +12,10 @@ const moreInfoBtn = {
   color: '#fff', 
   py: 1.5, 
   px: 2.5,
-  mt: 5
+  mt: 5,
+  '&:hover': {
+    backgroundColor: 'primary.main'
+  }
 }
 
 const accordionsContainerStyle = {
@@ -20,6 +23,12 @@ const accordionsContainerStyle = {
   flexDirection: 'column', 
   alignItems: 'center', 
   mt: 5
+}
+
+const summaryStyle = {
+  '&:hover': {
+    color: 'warning.main'
+  }
 }
 
 export default function MainFAQ() {
@@ -45,7 +54,7 @@ export default function MainFAQ() {
         expandIcon={<ExpandMoreIcon sx={{color: activeState && 'warning.main'}} fontSize='large'/>}
         aria-controls="panel1a-content"
         id="panel1a-header">
-          <Typography>{summary}</Typography>
+          <Typography sx={summaryStyle}>{summary}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

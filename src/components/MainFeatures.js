@@ -10,9 +10,7 @@ const featuresContainer = {
   display: 'flex',  
   flexDirection: 'column', 
   alignItems: 'center', 
-  textAlign: 'center', 
   gap: 3, 
-  position: 'relative', 
   mt: 17
 }
 
@@ -21,6 +19,9 @@ const moreInfoBtn = {
   color: '#fff', 
   py: 1.5, 
   px: 2.5,
+  '&:hover': {
+    backgroundColor: 'primary.main'
+  }
 }
 
 const rightGridStyle = {
@@ -42,7 +43,29 @@ const blueBackground = {
   
 }
 
-const leftGridStyle = {display: 'flex', justifyContent: 'end', position: 'relative', height: '346px'}
+const leftGridStyle = {
+  display: 'flex', 
+  justifyContent: 'end', 
+  position: 'relative', 
+  height: '346px'
+}
+
+const navsContainerStyle = {
+  display: 'flex', 
+  gap: 3, 
+  mt: 4, 
+  position: 'relative'
+}
+
+const navStyle = {
+  color: 'grayishBlue',
+  px: 4, 
+  pb: 3, 
+  '&:hover':{
+    color: 'warning.main',
+    cursor: 'pointer'
+  }
+}
 
 export default function MainFeatures() {
   const [activeNav, setActiveNav] = useState('Simple Bookmarking')
@@ -53,9 +76,8 @@ export default function MainFeatures() {
   function renderFeatures(){
     return(
       <Box sx={featuresContainer}>
-        <Typography variant='h4' sx={{fontWeight: '500'}}>Features</Typography>
-        <Typography sx={{color: 'gray', width: '32%'}}>Our aim is to make quick and easy for you to access your favourite websites. Your bookmarks sync between your devices so you can access them on the go.</Typography>
-        <Box sx={{display: 'flex', gap: 3, mt: 4}}>
+        <CenterHeaderComponent header={centerHeader} text={centerText}/>
+        <Box sx={navsContainerStyle}>
         {renderNavs()}
         <hr className='features-hr'/>
         </Box>
@@ -66,7 +88,7 @@ export default function MainFeatures() {
   function renderNavs(){
     const navs = ['Simple Bookmarking', 'Speedy Searching', 'Easy Sharing'];
     return navs.map(nav => 
-      <Typography sx={{px: 4, pb: 3}}
+      <Typography sx={navStyle}
       className={nav === activeNav && 'active-nav'} 
       onClick={()=> setActiveNav(nav)}>{nav}</Typography>
       )
