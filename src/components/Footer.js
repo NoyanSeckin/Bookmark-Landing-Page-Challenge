@@ -15,16 +15,17 @@ const headerContainerStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   textAlign: 'center',
-  gap: 3,
+  gap: {xs: 1, lg: 3},
   py: 7
 }
 
 const btnStyle = {
-  backgroundColor: 'warning.main', 
+  backgroundColor: 'warning.main',
   color: '#fff', 
-  ml: 2, 
-  px: 2, 
+  ml: {xs: 0, lg: 2}, 
   py: 1,
+  mt: {xs: 2, lg: '0'},
+  width: {xs: '100%', lg: '50%'},
   '&:hover':{
     backgroundColor: '#fff',
     borderColor: 'warning.main',
@@ -47,12 +48,48 @@ const alertContainerStyle = {
   color: '#fff', 
   fontSize: '13px', 
   py: 0.7, 
-  pr: 4.4, 
-  pl: 1,
+  pl: 0.3,
+  pr: '1.2rem',
   borderBottomRightRadius: '5px',
   borderBottomLeftRadius: '5px',
   top: '38px',
+  width: '100%',
+  boxSizing: 'border-box'
+}
 
+const inputAndBtnContainer = {
+  display: 'flex',
+  flexDirection: {xs: 'column', lg: 'row'},
+  mt: {xs: 3, lg: 0},
+  width: {xs: '90%', lg: 'auto'},
+}
+
+const iconsAndNavsContainer = {
+  display: 'flex', 
+  flexDirection: {xs: 'column', lg: 'row'},
+  gap: 5, 
+  pl: {xs: 0,lg: 15, xl: 0},
+
+}
+
+const navsContainer = {
+  alignSelf: 'center', 
+  display: 'flex', 
+  flexDirection: {xs: 'column', lg: 'row'},
+  gap: {xs: 3,lg: 5},
+  textAlign: {xs: 'center', lg: 'start'}
+}
+
+const containerStyle = {
+  display: 'flex', 
+  justifyContent: 'space-between',
+  flexDirection: {xs: 'column', lg: 'row'},
+  alignItems: {xs: 'center', lg: 'start'},
+}
+
+const twitterFacebookContainer = {
+  pr: {xs: 0, lg: 15, xl: 0},
+  mt: {xs: 5, lg: 0}
 }
 
 export default function Footer() {
@@ -74,13 +111,15 @@ export default function Footer() {
   function renderHeaderAndInput(){
     return(
       <Box sx={headerContainerStyle}>
-        <Typography sx={{...headerStyle, fontSize: '10px', letterSpacing: '0.3rem'}}>35.000+ ALREADY JOINED</Typography>
-        <Typography variant='h5' sx={{...headerStyle, width: {md: '35%', lg: '25%'}}}>Stay up-to-date with what we're doing</Typography>
-        <Box sx={{position: 'relative'}}>
+        <Typography sx={{...headerStyle, fontSize: {xs: '13px', lg: '10px'}, letterSpacing: '0.3rem'}}>35.000+ ALREADY JOINED</Typography>
+        <Typography variant='h5' sx={{...headerStyle, width: {xs: '95%', md: '35%', lg: '25%'}}}>Stay up-to-date with what we're doing</Typography>
+        <Box sx={inputAndBtnContainer}>
+          <Box sx={{width: '100%'}} className='footer-input-container'>
           <input type="email" placeholder='Enter your email address' className='footer-input' value={userInput} onChange={(e)=> handleChange(e)}/>
           <Error isError={inputAlert}/>
           <Box sx={{...alertContainerStyle, display: !inputAlert && 'none'}}>{inputAlert}</Box> 
-          <Button variant='outlined' sx={btnStyle} onClick={handleClick}>Contact Us</Button>
+          </Box>
+          <Button variant='outlined' sx={{...btnStyle, mt: {xs: inputAlert ? 4 : 2, lg: 0}}} onClick={handleClick}>Contact Us</Button>
         </Box>
       </Box>
     )
@@ -89,16 +128,16 @@ export default function Footer() {
   function renderFooter(){
     return(
       <Box sx={{backgroundColor: 'primary.dark', py: 4}}>
-        <Container maxWidth='xl' sx={{display: 'flex', justifyContent: 'space-between'}}>
-          <Box sx={{display: 'flex', gap: 5, pl: {lg: 15, xl: 0}}}>
+        <Container maxWidth='xl' sx={containerStyle}>
+          <Box sx={iconsAndNavsContainer}>
             <Bookmark textColor='#fff'/>
-            <Box sx={{alignSelf: 'center', display: 'flex', gap: 5}}>
+            <Box sx={navsContainer}>
             <Typography sx={navStyle}>FEATURES</Typography>
             <Typography sx={navStyle}>PRICING</Typography>
             <Typography sx={navStyle}>CONTACT</Typography>
             </Box>
           </Box>
-          <Box sx={{pr: {lg: 15, xl: 0}}}>
+          <Box sx={twitterFacebookContainer}>
             <Facebook/>
             <Twitter/>
           </Box>

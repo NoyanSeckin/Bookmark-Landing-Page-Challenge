@@ -132,9 +132,9 @@ export default function MainFeatures() {
 
   return (
     <Box sx={{mt: 17}}>
-      {renderFeatures()}
+      {/* {renderFeatures()} */}
       {/* <CenterHeaderComponent header={centerHeader} text={centerText}/> */}
-      {renderGrid()}
+      {/* {renderGrid()} */}
     </Box>
   )
 }

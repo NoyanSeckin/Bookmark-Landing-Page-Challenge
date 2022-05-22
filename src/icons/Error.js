@@ -4,7 +4,7 @@ import React from 'react'
 export default function Error({isError}) {
   const iconStyle = {
     position: 'absolute', 
-    right: '130px', 
+    right: '2px', 
     top: '10px', 
     display: !isError && 'none',
     zIndex: '3',

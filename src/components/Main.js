@@ -64,7 +64,6 @@ export default function Main() {
       <Grid item lg={6} xs={12} sx={{display: 'flex', justifyContent: 'end', position: 'relative'}}>
           <Hero/>
           <Box sx={blueBackgroundStyle}>
-
           </Box>
       </Grid>
     )
@@ -74,7 +73,7 @@ export default function Main() {
     return(
       <Grid container sx={{pt: 12}}>
       {renderLeftGridItem()}
-      {renderRightGridItem()}
+      {/* {renderRightGridItem()} */}
      </Grid>
     )
   }

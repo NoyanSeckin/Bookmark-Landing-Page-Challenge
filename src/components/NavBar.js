@@ -29,9 +29,21 @@ const navStyle = {
   }
 }
 
+const rightNavContainer = {
+  display: {xs: 'none', lg: 'flex'}, 
+  gap: 5, 
+  alignSelf: 'center'
+}
+
+const navbarContainer = { 
+  flexGrow: 1, 
+  px: {xs: 0, lg: 8}, 
+  pt: 2,
+}
+
 export default function NavBar() {
 
-  function renderRightNav(){
+  function renderRightNavLinks(){
     const navItems = ['FEATURES', 'PRICING', 'CONTACT'];
     return navItems.map(nav => 
     <Typography sx={navStyle}>
@@ -39,15 +51,21 @@ export default function NavBar() {
     </Typography>)
   }
 
+  function renderRightNav(){
+    return(
+      <Box sx={rightNavContainer}>
+      {renderRightNavLinks()}
+      <Button variant='outlined' sx={loginBtnStyle}>LOGIN</Button>
+    </Box>
+    )
+  }
+
   return (
-    <Box sx={{ flexGrow: 1, px: 8, pt: 2}}>
+    <Box sx={navbarContainer}>
       <AppBar elevation={0} position="static">
         <Toolbar sx={{background: '#fff', color: '#000', justifyContent: 'space-between'}}>
           <Bookmark textColor='#242A45'/>
-          <Box sx={{display: 'flex', gap: 5, alignSelf: 'center'}}>
-            {renderRightNav()}
-            <Button variant='outlined' sx={loginBtnStyle}>LOGIN</Button>
-          </Box>
+          {renderRightNav()}
           {/* <IconButton
             size="large"
             edge="start"

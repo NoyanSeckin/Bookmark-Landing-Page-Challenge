@@ -80,11 +80,18 @@ table {
 	outline: none;
 	border: none;
 	z-index: 2;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .footer-input::placeholder{
 	color: gray;
 }
+
+.footer-input-container{
+	position: relative;
+}
+
 
 .footer-icon:hover{
 	fill: hsl(0, 94%, 66%);
