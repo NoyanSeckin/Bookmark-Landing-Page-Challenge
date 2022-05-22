@@ -85,3 +85,8 @@ table {
 .footer-input::placeholder{
 	color: gray;
 }
+
+.footer-icon:hover{
+	fill: hsl(0, 94%, 66%);
+	cursor: pointer;
+}

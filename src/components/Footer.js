@@ -4,6 +4,7 @@ import React, {useState} from 'react'
 import Bookmark from '../icons/Bookmark'
 import Facebook from '../icons/Facebook'
 import Twitter from '../icons/Twitter'
+import Error from '../icons/Error'
 
 const headerStyle = {
   color: '#fff'
@@ -33,7 +34,11 @@ const btnStyle = {
 
 const navStyle = {
   color: 'lightGray', 
-  fontSize: '14px'
+  fontSize: '14px',
+  '&:hover': {
+    color: 'warning.main',
+    cursor: 'pointer'
+  }
 }
 
 const alertContainerStyle = {
@@ -55,9 +60,8 @@ export default function Footer() {
   const [inputAlert, setInputAlert] = useState("");
   
   function handleChange(event){
-    const input = event.target.value;
-    setUserInput(event.target.value)
-    setInputAlert('')
+    setUserInput(event.target.value);
+    inputAlert && setInputAlert('');
   }
 
   function handleClick(){
@@ -74,6 +78,7 @@ export default function Footer() {
         <Typography variant='h5' sx={{...headerStyle, width: {md: '35%', lg: '25%'}}}>Stay up-to-date with what we're doing</Typography>
         <Box sx={{position: 'relative'}}>
           <input type="email" placeholder='Enter your email address' className='footer-input' value={userInput} onChange={(e)=> handleChange(e)}/>
+          <Error isError={inputAlert}/>
           <Box sx={{...alertContainerStyle, display: !inputAlert && 'none'}}>{inputAlert}</Box> 
           <Button variant='outlined' sx={btnStyle} onClick={handleClick}>Contact Us</Button>
         </Box>
