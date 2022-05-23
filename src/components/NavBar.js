@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Bookmark from '../icons/Bookmark'
+import MobileNavModal from './MobileNavModal'
+
 
 const loginBtnStyle = {
   backgroundColor: 'warning.main', 
@@ -41,10 +43,18 @@ const navbarContainer = {
   pt: 2,
 }
 
+const hamburgerIconStyle = {
+  fontSize: '30px', 
+  display: {xs: 'block', lg: 'none'}
+}
+
 export default function NavBar() {
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+
+  const navItems = ['FEATURES', 'PRICING', 'CONTACT'];
   function renderRightNavLinks(){
-    const navItems = ['FEATURES', 'PRICING', 'CONTACT'];
     return navItems.map(nav => 
     <Typography sx={navStyle}>
       {nav}
@@ -60,23 +70,25 @@ export default function NavBar() {
     )
   }
 
+  function renderHamburgerIcon(){
+    return(
+     
+      <MenuIcon onClick={handleOpen}
+       sx={hamburgerIconStyle} />
+    )
+  }
+
   return (
     <Box sx={navbarContainer}>
       <AppBar elevation={0} position="static">
         <Toolbar sx={{background: '#fff', color: '#000', justifyContent: 'space-between'}}>
           <Bookmark textColor='#242A45'/>
           {renderRightNav()}
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
+          {renderHamburgerIcon()}
+          
         </Toolbar>
       </AppBar>
+      <MobileNavModal navItems={navItems} open={open} setOpen={setOpen}/>
     </Box>
   );
 }

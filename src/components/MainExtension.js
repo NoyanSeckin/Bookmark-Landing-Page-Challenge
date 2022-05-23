@@ -23,11 +23,13 @@ const cardsContainer = {
   justifyContent: 'center', 
   gap: 5, 
   height: '370px', 
-  mt: 7
+  mt: 7,
+  flexWrap: 'wrap',
 }
 
 const cardStyle = {
   maxWidth: '250px', 
+  borderRadius: '8px',
   display: 'flex', 
   flexDirection: 'column', 
   alignItems: 'center', 
@@ -49,7 +51,7 @@ export default function MainExtensionjs() {
 
   function renderCard(Icon, header, text, alignSelf){
     return(
-      <Card sx={{...cardStyle, alignSelf}}>
+      <Card elevation={3} sx={{...cardStyle, alignSelf}}>
         <Icon/>
         <CardContent> 
           <Typography variant='h6'>Add to {header}</Typography>
@@ -74,7 +76,7 @@ export default function MainExtensionjs() {
   }
 
   return (
-    <Box sx={{mt: '15rem'}}>
+    <Box sx={{mt: '15rem', mb: {xs: '50rem', lg: 0}}}>
       <CenterHeaderComponent header={centerHeader} text={centerText}/>
       {renderCards()}
     </Box>

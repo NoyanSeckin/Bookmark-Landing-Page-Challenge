@@ -39,13 +39,25 @@ const firefoxBtnStyle = {
   }
 }
 
-export default function Main() {
+const leftGridItemStyle = {
+  display: 'flex', 
+  alignItems: 'center', 
+  order: {xs: 2, lg: 1}
+}
 
+const rightGridItemStyle = {
+  display: 'flex', 
+  justifyContent: {xs: 'start', lg: 'end'}, 
+  position: 'relative', 
+  order: {xs: 1, lg: 2}
+}
+
+export default function Main() {
 
   function renderLeftGridItem(){
     return(
-      <Grid item lg={6} xs={12} sx={{display: 'flex', alignItems: 'center', }}>
-       <Box sx={{ml: 10}}>
+      <Grid item lg={6} xs={12} sx={leftGridItemStyle}>
+       <Box sx={{ml: {xs: 0, lg: 10}}}>
        <Typography variant='h2'>
           A Simple Bookmark Manager
         </Typography>
@@ -61,10 +73,10 @@ export default function Main() {
 
   function renderRightGridItem(){
     return(
-      <Grid item lg={6} xs={12} sx={{display: 'flex', justifyContent: 'end', position: 'relative'}}>
+      <Grid item lg={6} xs={12} sx={rightGridItemStyle}>
           <Hero/>
-          <Box sx={blueBackgroundStyle}>
-          </Box>
+          {/* <Box sx={blueBackgroundStyle}>
+          </Box> */}
       </Grid>
     )
   }
@@ -73,7 +85,7 @@ export default function Main() {
     return(
       <Grid container sx={{pt: 12}}>
       {renderLeftGridItem()}
-      {/* {renderRightGridItem()} */}
+      {renderRightGridItem()}
      </Grid>
     )
   }
