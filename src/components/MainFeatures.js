@@ -51,20 +51,29 @@ const leftGridStyle = {
 }
 
 const navsContainerStyle = {
-  display: 'flex', 
+  display: {xs: 'none', lg: 'flex'}, 
   gap: 3, 
   mt: 4, 
-  position: 'relative'
+  position: 'relative',
 }
 
 const navStyle = {
   color: 'grayishBlue',
-  px: 4, 
-  pb: 3, 
+  fontSize: {xs: '1.25rem', lg: '1rem'},
+  mt: {xs: 1.5, lg: 0},
+  px: {xs: 2, lg: 4}, 
+  pb: {xs: 1.5, lg: 3}, 
   '&:hover':{
     color: 'warning.main',
     cursor: 'pointer'
   }
+}
+
+const mobileNavsContainerStyle = {
+  display: {xs: 'flex', lg: 'none'}, 
+  flexDirection: 'column', 
+  textAlign: 'center',
+  width: '98%',
 }
 
 export default function MainFeatures() {
@@ -81,6 +90,10 @@ export default function MainFeatures() {
         {renderNavs()}
         <hr className='features-hr'/>
         </Box>
+        <Box sx={mobileNavsContainerStyle}>
+          <hr width='100%' className='mobile-features-hr'/>
+          {renderNavs()}
+        </Box>
       </Box>
     )
   }
@@ -88,9 +101,14 @@ export default function MainFeatures() {
   function renderNavs(){
     const navs = ['Simple Bookmarking', 'Speedy Searching', 'Easy Sharing'];
     return navs.map(nav => 
-      <Typography sx={navStyle}
-      className={nav === activeNav && 'active-nav'} 
-      onClick={()=> setActiveNav(nav)}>{nav}</Typography>
+      <Box>
+        <Typography sx={navStyle}
+        className={nav === activeNav && 'active-nav'} 
+        onClick={()=> setActiveNav(nav)}>{nav}</Typography>
+        <Box sx={{display: {xs: 'block', lg: 'none'}}}>
+          <hr className='mobile-features-hr'/>
+        </Box>
+      </Box>
       )
   }
 
@@ -132,8 +150,7 @@ export default function MainFeatures() {
 
   return (
     <Box sx={{mt: 17}}>
-      {/* {renderFeatures()} */}
-      {/* <CenterHeaderComponent header={centerHeader} text={centerText}/> */}
+      {renderFeatures()}
       {/* {renderGrid()} */}
     </Box>
   )

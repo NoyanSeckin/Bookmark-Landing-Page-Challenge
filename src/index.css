@@ -49,7 +49,10 @@ table {
 .active-nav{
 	border-bottom: 5px solid hsl(0, 94%, 66%);
 	color: #000 !important;
+	position: relative;
 }
+
+
 
 .features-hr{
 	border: 1px solid lightgray;
@@ -101,4 +104,21 @@ table {
 .mobile-nav-hr{
 	border: 1px solid hsl(229, 8%, 60%);
 	opacity: 0.3;
+}
+
+
+@media only screen and (max-width: 1200px) {
+	.active-nav::after{
+		content: 'lll';
+		color: #fff;
+		border-bottom: 5px solid hsl(0, 94%, 66%) 	;
+		position: absolute;
+		bottom: -10px;
+		width: 50%;
+		left: 25%;
+	}
+
+	.active-nav{
+		border: none;
+	}
 }
