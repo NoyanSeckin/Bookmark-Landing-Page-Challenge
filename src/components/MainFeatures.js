@@ -168,7 +168,7 @@ export default function MainFeatures() {
 
   function renderDesktopGrid(){
     return(
-      <Grid container sx={{mt: 10, display: {xs: 'none', lg: 'block'}}}>
+      <Grid container sx={{mt: 10, display: {xs: 'none', lg: 'flex'}}}>
         <Grid item lg={6} sx={leftGridStyle}>
           {renderSvgs()}
           <Box sx={blueBackground}></Box>

@@ -76,7 +76,7 @@ export default function MainExtensionjs() {
   }
 
   return (
-    <Box sx={{mt: '15rem', mb: {xs: '50rem', lg: 0}}}>
+    <Box sx={{mt: {xs: '11rem', lg: '15rem'}, mb: {xs: '50rem', lg: 0}}}>
       <CenterHeaderComponent header={centerHeader} text={centerText}/>
       {renderCards()}
     </Box>
