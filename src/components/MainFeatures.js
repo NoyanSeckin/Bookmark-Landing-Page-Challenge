@@ -25,9 +25,10 @@ const moreInfoBtn = {
 }
 
 const rightGridStyle = {
-  display: 'flex', 
+  display: {xs: 'none', lg: 'flex'}, 
   justifyContent: 'center', 
-  alignItems: 'center'
+  alignItems: 'center',
+  mt: {xs: 8, lg: 0}
 }
 
 const blueBackground = {
@@ -44,7 +45,7 @@ const blueBackground = {
 }
 
 const leftGridStyle = {
-  display: 'flex', 
+  display: {xs: 'none', lg: 'flex'}, 
   justifyContent: 'end', 
   position: 'relative', 
   height: '346px'
@@ -76,11 +77,32 @@ const mobileNavsContainerStyle = {
   width: '98%',
 }
 
+const mobileImagesContainer = {
+  display: {xs: 'flex', lg: 'none'},
+  position: 'relative',
+  mb: 10
+}
+
+const mobileBackgroundStyle = {
+  position: 'absolute',
+  backgroundColor: 'primary.main',
+  height: '240px',
+  width: '100%',
+  zIndex: '-1',
+  left: '-20px',
+  bottom: '-35px',
+  borderTopRightRadius: '35%',
+  borderBottomRightRadius: '35%'
+}
+
 export default function MainFeatures() {
   const [activeNav, setActiveNav] = useState('Simple Bookmarking')
 
   const centerHeader = "Features"
   const centerText= "Our aim is to make quick and easy for you to access your favourite websites. Your bookmarks sync between your devices so you can access them on the go."
+
+  const bookmarkHeader = 'Bookmark in one click'
+  const bookmarkText = 'Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites.'
 
   function renderFeatures(){
     return(
@@ -112,33 +134,43 @@ export default function MainFeatures() {
       )
   }
 
-  function renderLeftGrid(){
+  function renderSvgs(){
     if(activeNav === 'Simple Bookmarking'){
-      return  <Illustration1/>
+      return <Illustration1/>
     }else if(activeNav === 'Speedy Searching'){
       return <Illustration2/>
     } else return <Illustration3/>
   }
 
+  function renderMobileImages(){
+    const width = '100%'
+    if(activeNav === 'Simple Bookmarking'){
+      return <img width={width} src={require('../images/illustration-1.png')} alt=''/>
+    }else if(activeNav === 'Speedy Searching'){
+      return <img width={width} src={require('../images/illustration-2.png')} alt=''/>
+    } else return <img width={width} src={require('../images/illustration-3.png')} alt=''/>
+  }
+
+
   function renderRightGrid(){
     return(
       <Box sx={{width: '60%'}}>
       <Typography variant='h5' sx={{fontWeight: '500'}}>  
-        Bookmark in one click
+        {bookmarkHeader}
       </Typography>
       <Typography sx={{my: 3, color: 'gray', width: '87%'}}>
-        Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites.
+        {bookmarkText}
       </Typography>
       <Button variant='contained' sx={moreInfoBtn}>More Info</Button>
       </Box>
     )
   }
 
-  function renderGrid(){
+  function renderDesktopGrid(){
     return(
-      <Grid container sx={{mt: 10}}>
+      <Grid container sx={{mt: 10, display: {xs: 'none', lg: 'block'}}}>
         <Grid item lg={6} sx={leftGridStyle}>
-          {renderLeftGrid()}
+          {renderSvgs()}
           <Box sx={blueBackground}></Box>
         </Grid>
         <Grid item lg={6} sx={rightGridStyle}>
@@ -148,10 +180,25 @@ export default function MainFeatures() {
     )
   }
 
+  function renderMobileGrid(){
+    return(
+      <Grid container sx={{mt: 10, display: {xs: 'block', lg: 'none'}}}>
+        <Grid item xs={12} sx={mobileImagesContainer}> 
+          {renderMobileImages()}
+          <Box sx={mobileBackgroundStyle}></Box>
+        </Grid>
+        <Grid item xs={12}> 
+          <CenterHeaderComponent header={bookmarkHeader} text={bookmarkText}/> 
+        </Grid>
+      </Grid>
+    )
+  }
+
   return (
     <Box sx={{mt: 17}}>
       {renderFeatures()}
-      {/* {renderGrid()} */}
+      {renderDesktopGrid()}
+      {renderMobileGrid()}
     </Box>
   )
 }
