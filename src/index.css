@@ -89,6 +89,7 @@ table {
 
 .footer-input::placeholder{
 	color: gray;
+	font-size: 11px;
 }
 
 .footer-input-container{

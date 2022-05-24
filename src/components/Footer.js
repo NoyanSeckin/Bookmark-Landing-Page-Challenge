@@ -25,7 +25,7 @@ const btnStyle = {
   ml: {xs: 0, lg: 2}, 
   py: 1,
   mt: {xs: 2, lg: '0'},
-  width: {xs: '100%', lg: '50%'},
+  width: {xs: '100%', lg: '60%'},
   '&:hover':{
     backgroundColor: '#fff',
     borderColor: 'warning.main',
