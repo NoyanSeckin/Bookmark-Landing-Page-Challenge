@@ -1,5 +1,5 @@
 # Description
-This is a Frontend Mentor landing page challenge. It has mobile and desktop design. I implemented both using React JS & Material UI library. App is live at https://bookmark-landing-page-challenge-01.netlify.app/
+This is a Frontend Mentor landing page challenge. It has mobile and desktop design. I implemented both of these designs, using React JS & Material UI library. App is live at https://bookmark-landing-page-challenge-01.netlify.app/
 
 ## Screen Shots
 
